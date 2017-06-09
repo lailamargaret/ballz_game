@@ -3,6 +3,7 @@
 #include "block.h"
 #include <QGraphicsView>
 
+
 Game::Game(QWidget *parent) : QGraphicsView (parent)
 {
     scene = new QGraphicsScene(0,0,740,920);

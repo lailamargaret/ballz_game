@@ -3,7 +3,7 @@
 #include "block.h"
 #include <QTimer>
 
-//extern Game* game;
+extern Game* game;
 
 Ball::Ball(QGraphicsItem *parent) : QGraphicsEllipseItem(parent), QObject() {
     setRect(0,0,10,10);
@@ -49,7 +49,7 @@ void Ball::hit_block()
     for (int i = 0, n = col_it.size(); i < n; ++i){
         Block * block = dynamic_cast<Block*>(col_it[i]);
         if(block){
-          //  game -> scene -> removeItem(block);
+            game -> scene -> removeItem(block);
             delete col_it[i];
             return;
         }
