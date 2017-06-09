@@ -1,5 +1,6 @@
 #include "game.h"
 #include "ball.h"
+#include "block.h"
 #include <QGraphicsView>
 
 Game::Game(QWidget *parent) : QGraphicsView (parent)
@@ -18,4 +19,8 @@ void Game::play()
     ball->setFocus();
     ball->setPos(320,880);
     scene -> addItem(ball);
+
+    Block* block = new Block(0);
+    block -> setPos(10,10);
+    scene -> addItem(block);
 }

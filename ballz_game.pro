@@ -25,8 +25,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp \
     game.cpp \
-    ball.cpp
+    ball.cpp \
+    block.cpp
 
 HEADERS  += \
     game.h \
-    ball.h
+    ball.h \
+    block.h
