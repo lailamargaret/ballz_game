@@ -21,7 +21,7 @@ void Game::play()
     ball->setPos(320,880);
     scene -> addItem(ball);
 
-    Block* block = new Block(0);
+    Block* block = new Block(1);
     block -> setPos(10,10);
     scene -> addItem(block);
 }

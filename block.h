@@ -6,11 +6,12 @@
 
 class Block : public QObject, public QGraphicsRectItem {
 public:
-    Block(QGraphicsItem* parent = 0, int new_value = 1);
-
+    Block(QGraphicsItem* parent = 0);
+    Block(int new_value, QGraphicsItem* = 0);
+    friend class Ball;
 private:
    int value;
+   QGraphicsTextItem print_value;
 };
-
 
 #endif // BLOCK_H
