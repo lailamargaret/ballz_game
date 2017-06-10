@@ -2,17 +2,34 @@
 #include "game.h"
 #include "block.h"
 #include <QTimer>
+#include <QDebug>
 
 extern Game* game;
 
 Ball::Ball(QGraphicsItem *parent) : QGraphicsEllipseItem(parent), QObject() {
     setRect(0,0,10,10);
-    x_velocity = -5;
-    y_velocity = -5;
+    x_velocity = 0;
+    y_velocity = 0;
 
     QTimer* timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
     timer -> start(16);
+}
+
+void Ball::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{  qDebug() << "Custom item clicked.";
+
+  // if (event->type() == QEvent::MouseButtonRelease){
+    QPointF point = event->scenePos();
+   double clickx = point.x();
+   double clicky = point.y();
+
+    double locx = this->pos().x();
+    double locy = this->pos().x();
+
+    x_velocity = -5; // clickx - locx;
+    y_velocity = -5; //clicky - locy;
+  }
 }
 
 void Ball::move()

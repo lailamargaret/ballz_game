@@ -6,10 +6,10 @@ extern Game* game;
 //default constructor
 Block::Block(QGraphicsItem *parent) : QGraphicsRectItem(parent), QObject(){
     value = 1;
-    print_value.setPlainText(QString::number(value));
+   // print_value.setPlainText(QString::number(value));
     setRect(0,0,730,100);
-    print_value* p_value = new QGraphicsTextItem;
-    game->scene->addItem(p_value);
+    //print_value* p_value = new QGraphicsTextItem;
+   // game->scene->addItem(p_value);
 
 }
 

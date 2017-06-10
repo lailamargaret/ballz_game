@@ -11,7 +11,7 @@ public:
     friend class Ball;
 private:
    int value;
-   QGraphicsTextItem print_value;
+   //QGraphicsTextItem print_value;
 };
 
 #endif // BLOCK_H
