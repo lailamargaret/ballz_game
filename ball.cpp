@@ -19,6 +19,7 @@ void Ball::move()
 {
     moveBy(x_velocity, y_velocity);
     hit_wall();
+    hit_block();
 }
 
 void Ball::hit_wall()
@@ -49,8 +50,11 @@ void Ball::hit_block()
     for (int i = 0, n = col_it.size(); i < n; ++i){
         Block * block = dynamic_cast<Block*>(col_it[i]);
         if(block){
-            game -> scene -> removeItem(block);
-            delete col_it[i];
+            y_velocity*=-1;
+            //game -> scene -> removeItem(block);
+            -- block->value;
+            if (block->value == -0)
+                 delete block;
             return;
         }
     }

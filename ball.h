@@ -6,6 +6,7 @@
 class Ball : public QObject, public QGraphicsEllipseItem {
     Q_OBJECT
 public:
+    friend class Block;
     Ball(QGraphicsItem* parent = 0);
 public slots:
     void move();
