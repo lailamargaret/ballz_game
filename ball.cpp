@@ -16,10 +16,7 @@ Ball::Ball(QGraphicsItem *parent) : QGraphicsEllipseItem(parent), QObject() {
     timer -> start(16);
 }
 
-void Ball::respond_by_moving(QPoint click_loc)
-{
-
-}
+//void Ball::respond_by_moving(QPoint click_loc)
 
 void Ball::mousePressEvent(QGraphicsSceneMouseEvent * event)
 {  qDebug() << "Custom item clicked.";

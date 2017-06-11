@@ -1,18 +1,18 @@
 #include "game.h"
 #include "ball.h"
 #include "block.h"
-#include "gamewindow.h"
+#include "myqgraphicsscene.h"
 #include <QGraphicsView>
 
 
 Game::Game(QWidget *parent) : QGraphicsView (parent)
 {
-    scene = new QGraphicsScene(0,0,740,920);
-    //GameWindow* gamewindow = new GameWindow(0,0,740,920);
+    /*scene = new QGraphicsScene(0,0,740,920);
     setFixedSize(740,920);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    setScene(scene);
+    setScene(scene);*/
+   MyQGraphicsScene* my_scene = new MyQGraphicsScene();
 }
 
 void Game::play()
@@ -21,7 +21,7 @@ void Game::play()
     ball -> setFlag(QGraphicsItem::ItemIsFocusable);
     ball->setFocus();
     ball->setPos(320,880);
-    scene -> addItem(ball);
+   scene -> addItem(ball);
 
     //mousePressEvent(QGraphicsSceneMouseEvent * event);
 
