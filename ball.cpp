@@ -16,20 +16,25 @@ Ball::Ball(QGraphicsItem *parent) : QGraphicsEllipseItem(parent), QObject() {
     timer -> start(16);
 }
 
-void Ball::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void Ball::respond_by_moving(QPoint click_loc)
+{
+
+}
+
+void Ball::mousePressEvent(QGraphicsSceneMouseEvent * event)
 {  qDebug() << "Custom item clicked.";
 
   // if (event->type() == QEvent::MouseButtonRelease){
-    QPointF point = event->scenePos();
-   double clickx = point.x();
-   double clicky = point.y();
+   //QPointF point = event->scenePos();
+   //double clickx = point.x();
+   //double clicky = point.y();
 
-    double locx = this->pos().x();
-    double locy = this->pos().x();
+   // double locx = this->pos().x();
+  //  double locy = this->pos().x();
 
     x_velocity = -5; // clickx - locx;
     y_velocity = -5; //clicky - locy;
-  }
+  //}
 }
 
 void Ball::move()

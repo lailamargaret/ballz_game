@@ -9,6 +9,7 @@ class Ball : public QObject, public QGraphicsEllipseItem {
 public:
     friend class Block;
     Ball(QGraphicsItem* parent = 0);
+    void respond_by_moving(QPoint click_loc);
 public slots:
     void mousePressEvent(QGraphicsSceneMouseEvent* event);
     void move();
