@@ -2,8 +2,8 @@
 
 Block_value::Block_value(QGraphicsItem *parent) : QGraphicsTextItem(parent), QObject()
 {
-    score = Block.value;
+    //score = Block.value;
 
-    setPlainText(QString::number(score));
-    setFont(QFont("times", 16));
+    //setPlainText(QString::number(score));
+   // setFont(QFont("times", 16));
 }
