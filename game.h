@@ -13,7 +13,7 @@ public:
 
     QGraphicsScene* scene;
 
-    QPointF mouseReleaseEvent(QGraphicsSceneMouseEvent * e);
+    QPointF mousePressEvent(QGraphicsSceneMouseEvent * e);
 };
 
 #endif // GAME_H

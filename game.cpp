@@ -35,19 +35,37 @@ void Game::play()
      }
    }*/
 
-  // int num_blocks = rand() % 7;
-   int num_blocks =2;
-   for (int i = 0; i < num_blocks; ++i){
+  int num_blocks = rand() % 7 + 1;
+  std::vector<Block> blocks;
+
+  //draw first block
+  int loc = rand() % 7;
+  Block * block = new Block(1);
+  block->setPos(10+loc*110, 10);
+  scene -> addItem(block);
+  blocks.push_back(block);
+  qDebug() << "Block added at" << loc;
+
+
+  for (int i = 0; i < num_blocks - 1; ++i){
        int loc = rand() % 7;
-       Block * block = new Block(1);
-       block->setPos(10+loc*100, 10);
-       scene -> addItem(block);
+       for (int i = 0; i < blocks.size(); ++i){
+           if (blocks[i].pos().x() != 10+loc*110){
+               Block * block = new Block(1);
+               block->setPos(10+loc*110, 10);
+               scene -> addItem(block);
+               blocks.push_back(block);
+               qDebug() << "Block added at" << loc;
+           }
+       }
+
    }
 
 }
 
-QPointF Game::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
+QPointF Game::mousePressEvent(QGraphicsSceneMouseEvent * e)
 {
-    QPointF click_loc = e->pos();
+   // QPointF click_loc = e->pos();
     qDebug() << "Scene clicked - it worked!";
+    return QPointF(0,0);
 }
