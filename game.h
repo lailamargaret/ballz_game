@@ -3,6 +3,7 @@
 
 #include <QGraphicsView>
 #include <QGraphicsScene>
+#include <QPoint>
 
 class Game: public QGraphicsView{
 public:
@@ -11,6 +12,8 @@ public:
     void play();
 
     QGraphicsScene* scene;
+
+    QPointF mouseReleaseEvent(QGraphicsSceneMouseEvent * e);
 };
 
 #endif // GAME_H

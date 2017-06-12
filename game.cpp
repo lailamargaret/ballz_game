@@ -4,6 +4,8 @@
 #include "myqgraphicsscene.h"
 #include <QGraphicsView>
 #include <ctime>
+#include <QDebug>
+#include <QMouseEvent>
 
 
 Game::Game(QWidget *parent) : QGraphicsView (parent)
@@ -13,7 +15,7 @@ Game::Game(QWidget *parent) : QGraphicsView (parent)
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setScene(scene);
- //  MyQGraphicsScene* my_scene = new MyQGraphicsScene();
+
 }
 
 void Game::play()
@@ -24,8 +26,6 @@ void Game::play()
     ball->setPos(320,880);
    scene -> addItem(ball);
 
-    //mousePressEvent(QGraphicsSceneMouseEvent * event);
-
 
    /*for (int i = 0; i < 7; ++i){
        for (int j = 0; j < 6; ++j ){
@@ -35,6 +35,19 @@ void Game::play()
      }
    }*/
 
-   int num_blocks = rand() % 7;
+  // int num_blocks = rand() % 7;
+   int num_blocks =2;
+   for (int i = 0; i < num_blocks; ++i){
+       int loc = rand() % 7;
+       Block * block = new Block(1);
+       block->setPos(10+loc*100, 10);
+       scene -> addItem(block);
+   }
 
+}
+
+QPointF Game::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
+{
+    QPointF click_loc = e->pos();
+    qDebug() << "Scene clicked - it worked!";
 }
