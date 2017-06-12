@@ -30,9 +30,6 @@ void Game::play()
     spawn_blocks();
 
 
-
-
-
 }
 
 QPointF Game::mousePressEvent(QGraphicsSceneMouseEvent * e)

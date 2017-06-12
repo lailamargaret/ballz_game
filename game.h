@@ -4,6 +4,7 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QPoint>
+#include "block.h"
 
 class Game: public QGraphicsView{
 public:
@@ -14,6 +15,11 @@ public:
     QGraphicsScene* scene;
 
     QPointF mousePressEvent(QGraphicsSceneMouseEvent * e);
+
+    void spawn_blocks();
+
+private:
+    std::vector<Block> blocks;
 };
 
 #endif // GAME_H
