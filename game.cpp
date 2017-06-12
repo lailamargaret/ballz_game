@@ -3,6 +3,7 @@
 #include "block.h"
 #include "myqgraphicsscene.h"
 #include <QGraphicsView>
+#include <ctime>
 
 
 Game::Game(QWidget *parent) : QGraphicsView (parent)
@@ -25,11 +26,15 @@ void Game::play()
 
     //mousePressEvent(QGraphicsSceneMouseEvent * event);
 
-   for (int i = 0; i < 7; ++i){
+
+   /*for (int i = 0; i < 7; ++i){
        for (int j = 0; j < 6; ++j ){
          Block* block = new Block(2);
          block -> setPos(10+i*110,10 + j* 110);
          scene -> addItem(block);
      }
-   }
+   }*/
+
+   int num_blocks = rand() % 7;
+
 }
