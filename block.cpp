@@ -7,7 +7,7 @@ extern Game* game;
 Block::Block(QGraphicsItem *parent) : QGraphicsRectItem(parent), QObject(){
     value = 1;
    // print_value.setPlainText(QString::number(value));
-    setRect(0,0,730,100);
+    setRect(0,0,100,100);
     //print_value* p_value = new QGraphicsTextItem;
    // game->scene->addItem(p_value);
 
@@ -16,6 +16,6 @@ Block::Block(QGraphicsItem *parent) : QGraphicsRectItem(parent), QObject(){
 //constructor taking an int
 Block::Block(int new_value, QGraphicsItem *parent) : QGraphicsRectItem(parent), QObject(), value(new_value)
 {
-    setRect(0,0,500,100);
+    setRect(0,0,100,100);
 }
 

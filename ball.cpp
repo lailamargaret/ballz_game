@@ -69,7 +69,19 @@ void Ball::hit_block()
     for (int i = 0, n = col_it.size(); i < n; ++i){
         Block * block = dynamic_cast<Block*>(col_it[i]);
         if(block){
-            y_velocity*=-1;
+            //cases for where it hits the block
+          //hits the bottom
+          if (pos().y() > block->pos().y() + 10 && y_velocity < 0)
+              y_velocity*=-1;
+          //hits the top
+          if (block->pos().y() > pos().y() + 10 && y_velocity > 0)
+              y_velocity*=-1;
+         //hits the right side
+          if (pos().x() > block->pos().x() + 10 && x_velocity < 0)
+              x_velocity*=-1;
+         //hits the left side
+          if (block->pos().x() > pos().x() + 10 && x_velocity > 0)
+              x_velocity*=-1;
             //game -> scene -> removeItem(block);
             -- block->value;
             if (block->value == -0)

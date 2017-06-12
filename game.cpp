@@ -7,12 +7,12 @@
 
 Game::Game(QWidget *parent) : QGraphicsView (parent)
 {
-    /*scene = new QGraphicsScene(0,0,740,920);
-    setFixedSize(740,920);
+    scene = new QGraphicsScene(0,0,780,920);
+    setFixedSize(780,920);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    setScene(scene);*/
-   MyQGraphicsScene* my_scene = new MyQGraphicsScene();
+    setScene(scene);
+ //  MyQGraphicsScene* my_scene = new MyQGraphicsScene();
 }
 
 void Game::play()
@@ -25,7 +25,11 @@ void Game::play()
 
     //mousePressEvent(QGraphicsSceneMouseEvent * event);
 
-    Block* block = new Block(1);
-    block -> setPos(10,10);
-    scene -> addItem(block);
+   for (int i = 0; i < 7; ++i){
+       for (int j = 0; j < 6; ++j ){
+         Block* block = new Block(2);
+         block -> setPos(10+i*110,10 + j* 110);
+         scene -> addItem(block);
+     }
+   }
 }
