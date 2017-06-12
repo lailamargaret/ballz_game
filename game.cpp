@@ -30,17 +30,17 @@ void Game::play()
 
     spawn_blocks();
 
-    move_blocks_down();
-    spawn_blocks();
+   // move_blocks_down();
+   // spawn_blocks();
 
 
 }
 
-QPointF Game::mousePressEvent(QGraphicsSceneMouseEvent * e)
+void Game::mousePressEvent(QMouseEvent * e)
 {
-   // QPointF click_loc = e->pos();
+    QPointF click_loc = e->pos();
     qDebug() << "Scene clicked - it worked!";
-    return QPointF(0,0);
+    //return click_loc;
 }
 
 void Game::spawn_blocks()

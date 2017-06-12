@@ -14,7 +14,7 @@ public:
 
     QGraphicsScene* scene;
 
-    QPointF mousePressEvent(QGraphicsSceneMouseEvent * e);
+    void mousePressEvent(QMouseEvent * e);
 
     void spawn_blocks();
 
