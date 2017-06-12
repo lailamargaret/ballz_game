@@ -68,8 +68,9 @@ void Ball::hit_block()
             //game -> scene -> removeItem(block);
             -- block->value;
             if (block->value == 0){
-                game->score->increase();
-                 delete block;
+                //game->score->increase();
+               // game->scene->removeItem(col_it[i]);
+                delete block;
             }
             return;
         }
