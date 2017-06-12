@@ -30,8 +30,8 @@ void Game::play()
 
     spawn_blocks();
 
-    move_blocks_down();
-    spawn_blocks();
+   // move_blocks_down();
+   // spawn_blocks();
 
 
 }
