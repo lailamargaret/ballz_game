@@ -39,12 +39,16 @@ void Game::mousePressEvent(QMouseEvent * e)
 {
     QPointF click_loc = e->pos();
     clicked = true;
+
+    ball->x_velocity = (click_loc.x()-ball->pos().x())/30;
+    ball->y_velocity = (click_loc.y()-ball->pos().y())/30;
+
     qDebug() << "Scene clicked - it worked!";
 
-    if (ball->x_velocity == 0 && ball->y_velocity == 0){
+   // if (ball->x_velocity == 0 && ball->y_velocity == 0){
     spawn_blocks();
     move_blocks_down();
-    }
+    //}
 
 }
 
@@ -57,7 +61,7 @@ void Game::spawn_blocks()
     // first block
     int loc = rand() % 7;
     locs.push_back(loc);
-    Block * block = new Block(2);
+    Block * block = new Block(1);
     block->setPos(10+loc*110, 10);
     scene -> addItem(block);
     //qDebug() << "Block added at" << loc;
@@ -70,7 +74,7 @@ void Game::spawn_blocks()
          }
 
          if (!dup){
-             Block * block = new Block(2);
+             Block * block = new Block(1);
              block->setPos(10+loc*110, 10);
              scene -> addItem(block);
              locs.push_back(loc);

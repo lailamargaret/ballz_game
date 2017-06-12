@@ -16,23 +16,11 @@ Ball::Ball(QGraphicsItem *parent) : QGraphicsEllipseItem(parent), QObject() {
     timer -> start(16);
 }
 
-//void Ball::respond_by_moving(QPoint click_loc)
-
-void Ball::mousePressEvent(QGraphicsSceneMouseEvent * event)
+/*void Ball::mousePressEvent(QGraphicsSceneMouseEvent * event)
 {  qDebug() << "Custom item clicked.";
-
-  // if (event->type() == QEvent::MouseButtonRelease){
-   //QPointF point = event->scenePos();
-   //double clickx = point.x();
-   //double clicky = point.y();
-
-   // double locx = this->pos().x();
-  //  double locy = this->pos().x();
-
-    x_velocity = -5; // clickx - locx;
-    y_velocity = -5; //clicky - locy;
-  //}
-}
+    x_velocity = -5;
+    y_velocity = -5;
+}*/
 
 void Ball::move()
 {
@@ -55,7 +43,7 @@ void Ball::hit_wall()
             x_velocity*=-1;
 
     //hit the bottom
-    if(mapToScene(rect().bottomRight()).y() > 910){
+    if(mapToScene(rect().bottomRight()).y() > 890){
         x_velocity = 0;
         y_velocity = 0;
     }

@@ -12,7 +12,7 @@ public:
     Ball(QGraphicsItem* parent = 0);
     //void respond_by_moving(QPoint click_loc);
 public slots:
-    void mousePressEvent(QGraphicsSceneMouseEvent* event);
+    //void mousePressEvent(QGraphicsSceneMouseEvent* event);
     void move();
 private:
     double x_velocity;
