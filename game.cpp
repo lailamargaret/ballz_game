@@ -6,6 +6,7 @@
 #include <ctime>
 #include <QDebug>
 #include <QMouseEvent>
+#include <QGraphicsItem>
 
 
 Game::Game(QWidget *parent) : QGraphicsView (parent)
@@ -29,8 +30,7 @@ void Game::play()
 
     spawn_blocks();
 
-
-
+    move_blocks_down();
 
 
 }
@@ -73,3 +73,15 @@ void Game::spawn_blocks()
 
     }
 }
+
+void Game::move_blocks_down()
+{
+    QList <QGraphicsItem* > all_it = items();
+    for (int i = 0, n = all_it.size(); i < n; ++i){
+        Block * block = dynamic_cast<Block*>(all_it[i]);
+        if(block){
+            block->setPos(block->pos().x(), block->pos().y()+110);
+        }
+    }
+}
+

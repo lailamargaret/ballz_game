@@ -18,6 +18,8 @@ public:
 
     void spawn_blocks();
 
+    void move_blocks_down();
+
 private:
     std::vector<Block> blocks;
 };
