@@ -5,6 +5,7 @@
 #include <QGraphicsScene>
 #include <QPoint>
 #include "block.h"
+#include "ball.h"
 
 class Game: public QGraphicsView{
 public:
@@ -22,6 +23,7 @@ public:
 
 private:
     std::vector<Block> blocks;
+    bool clicked;
 };
 
 #endif // GAME_H

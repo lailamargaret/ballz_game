@@ -8,6 +8,7 @@ class Ball : public QObject, public QGraphicsEllipseItem {
     Q_OBJECT
 public:
     friend class Block;
+    friend class Game;
     Ball(QGraphicsItem* parent = 0);
     //void respond_by_moving(QPoint click_loc);
 public slots:

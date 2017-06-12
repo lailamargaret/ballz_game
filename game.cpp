@@ -7,6 +7,7 @@
 #include <QDebug>
 #include <QMouseEvent>
 #include <QGraphicsItem>
+//#include <QTimer>
 
 
 Game::Game(QWidget *parent) : QGraphicsView (parent)
@@ -16,6 +17,8 @@ Game::Game(QWidget *parent) : QGraphicsView (parent)
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setScene(scene);
+
+    clicked = false;
 
 }
 
@@ -30,17 +33,18 @@ void Game::play()
 
     spawn_blocks();
 
-   // move_blocks_down();
-   // spawn_blocks();
-
-
 }
 
 void Game::mousePressEvent(QMouseEvent * e)
 {
     QPointF click_loc = e->pos();
+    clicked = true;
     qDebug() << "Scene clicked - it worked!";
-    //return click_loc;
+
+    spawn_blocks();
+    move_blocks_down();
+
+
 }
 
 void Game::spawn_blocks()
@@ -52,10 +56,10 @@ void Game::spawn_blocks()
     // first block
     int loc = rand() % 7;
     locs.push_back(loc);
-    Block * block = new Block(1);
+    Block * block = new Block(2);
     block->setPos(10+loc*110, 10);
     scene -> addItem(block);
-    qDebug() << "Block added at" << loc;
+    //qDebug() << "Block added at" << loc;
 
     for (int i = 0; i < num_blocks - 1; ++i){
         loc = rand() % 7;
@@ -65,11 +69,11 @@ void Game::spawn_blocks()
          }
 
          if (!dup){
-             Block * block = new Block(1);
+             Block * block = new Block(2);
              block->setPos(10+loc*110, 10);
              scene -> addItem(block);
              locs.push_back(loc);
-             qDebug() << "Block added at" << loc;
+             //qDebug() << "Block added at" << loc;
           }
 
     }
@@ -81,8 +85,12 @@ void Game::move_blocks_down()
     for (int i = 0, n = all_it.size(); i < n; ++i){
         Block * block = dynamic_cast<Block*>(all_it[i]);
         if(block){
+            if (block->pos().y() >= 770){
+                scene->removeItem(block);
+                delete block;}
             block->setPos(block->pos().x(), block->pos().y()+110);
         }
     }
+    clicked = false;
 }
 
