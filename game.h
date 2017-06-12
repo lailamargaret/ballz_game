@@ -8,6 +8,7 @@
 #include "ball.h"
 
 class Game: public QGraphicsView{
+    friend class ball;
 public:
     Game(QWidget* parent = nullptr);
 
@@ -24,6 +25,7 @@ public:
 private:
     std::vector<Block> blocks;
     bool clicked;
+    Ball * ball;
 };
 
 #endif // GAME_H

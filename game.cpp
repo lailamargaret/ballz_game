@@ -20,16 +20,16 @@ Game::Game(QWidget *parent) : QGraphicsView (parent)
 
     clicked = false;
 
-}
-
-void Game::play()
-{
-    Ball* ball = new Ball();
+    ball = new Ball();
     ball -> setFlag(QGraphicsItem::ItemIsFocusable);
     ball->setFocus();
     ball->setPos(320,880);
     scene -> addItem(ball);
 
+}
+
+void Game::play()
+{
 
     spawn_blocks();
 
@@ -41,9 +41,10 @@ void Game::mousePressEvent(QMouseEvent * e)
     clicked = true;
     qDebug() << "Scene clicked - it worked!";
 
+    if (ball->x_velocity == 0 && ball->y_velocity == 0){
     spawn_blocks();
     move_blocks_down();
-
+    }
 
 }
 
@@ -86,7 +87,7 @@ void Game::move_blocks_down()
         Block * block = dynamic_cast<Block*>(all_it[i]);
         if(block){
            block->setPos(block->pos().x(), block->pos().y()+110);
-           if (block->pos().y() >= 780){
+           if (block->pos().y() >= 890){
                scene->removeItem(block);
                delete block;}
         }

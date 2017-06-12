@@ -8,8 +8,8 @@ extern Game* game;
 
 Ball::Ball(QGraphicsItem *parent) : QGraphicsEllipseItem(parent), QObject() {
     setRect(0,0,10,10);
-    x_velocity = 0;
-    y_velocity = 0;
+    x_velocity = -5;
+    y_velocity = -5;
 
     QTimer* timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
