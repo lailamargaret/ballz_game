@@ -28,11 +28,13 @@ SOURCES += main.cpp \
     ball.cpp \
     block.cpp \
     block_value.cpp \
-    myqgraphicsscene.cpp
+    myqgraphicsscene.cpp \
+    score.cpp
 
 HEADERS  += \
     game.h \
     ball.h \
     block.h \
     block_value.h \
-    myqgraphicsscene.h
+    myqgraphicsscene.h \
+    score.h

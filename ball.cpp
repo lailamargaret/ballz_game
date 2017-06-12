@@ -7,20 +7,14 @@
 extern Game* game;
 
 Ball::Ball(QGraphicsItem *parent) : QGraphicsEllipseItem(parent), QObject() {
-    setRect(0,0,10,10);
-    x_velocity = -5;
-    y_velocity = -5;
+    setRect(0,0,20,20);
+    x_velocity = 0;
+    y_velocity = 0;
 
     QTimer* timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
-    timer -> start(16);
+    timer -> start(18);
 }
-
-/*void Ball::mousePressEvent(QGraphicsSceneMouseEvent * event)
-{  qDebug() << "Custom item clicked.";
-    x_velocity = -5;
-    y_velocity = -5;
-}*/
 
 void Ball::move()
 {
@@ -46,6 +40,7 @@ void Ball::hit_wall()
     if(mapToScene(rect().bottomRight()).y() > 890){
         x_velocity = 0;
         y_velocity = 0;
+
     }
 
 
@@ -72,8 +67,10 @@ void Ball::hit_block()
               x_velocity*=-1;
             //game -> scene -> removeItem(block);
             -- block->value;
-            if (block->value == 0)
+            if (block->value == 0){
+                game->score->increase();
                  delete block;
+            }
             return;
         }
     }

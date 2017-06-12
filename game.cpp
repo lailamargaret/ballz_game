@@ -8,7 +8,7 @@
 #include <QMouseEvent>
 #include <QGraphicsItem>
 //#include <QTimer>
-
+#include "score.h"
 
 Game::Game(QWidget *parent) : QGraphicsView (parent)
 {
@@ -26,6 +26,11 @@ Game::Game(QWidget *parent) : QGraphicsView (parent)
     ball->setPos(320,880);
     scene -> addItem(ball);
 
+    score = new Score();
+    score->setPos(10,890);
+    scene->addItem(score);
+
+
 }
 
 void Game::play()
@@ -37,13 +42,17 @@ void Game::play()
 
 void Game::mousePressEvent(QMouseEvent * e)
 {
+   if (ball->x_velocity != 0 && ball->y_velocity != 0){
+       return;
+   }
+
     QPointF click_loc = e->pos();
     clicked = true;
 
-    ball->x_velocity = (click_loc.x()-ball->pos().x())/30;
-    ball->y_velocity = (click_loc.y()-ball->pos().y())/30;
+    ball->x_velocity = (click_loc.x()-ball->pos().x())/40;
+    ball->y_velocity = (click_loc.y()-ball->pos().y())/40;
 
-    qDebug() << "Scene clicked - it worked!";
+   // qDebug() << "Scene clicked - it worked!";
 
    // if (ball->x_velocity == 0 && ball->y_velocity == 0){
     spawn_blocks();
