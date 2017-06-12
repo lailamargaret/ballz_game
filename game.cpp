@@ -36,18 +36,37 @@ void Game::play()
    }*/
 
   int num_blocks = rand() % 7 + 1;
-  std::vector<Block> blocks;
+  std::vector<int> locs;
+  bool dup = false;
 
-  //draw first block
+
+  // first block
   int loc = rand() % 7;
+  locs.push_back(loc);
   Block * block = new Block(1);
   block->setPos(10+loc*110, 10);
   scene -> addItem(block);
-  blocks.push_back(block);
   qDebug() << "Block added at" << loc;
 
 
   for (int i = 0; i < num_blocks - 1; ++i){
+      loc = rand() % 7;
+      for (int i = 0; i < locs.size(); ++i){
+          if (locs[i] == loc){
+             dup = true;
+          }
+      }
+
+      if (!dup){
+          Block * block = new Block(1);
+          block->setPos(10+loc*110, 10);
+          scene -> addItem(block);
+          locs.push_back(loc);
+          qDebug() << "Block added at" << loc;
+      }
+}
+
+ /* for (int i = 0; i < num_blocks - 1; ++i){
        int loc = rand() % 7;
        for (int i = 0; i < blocks.size(); ++i){
            if (blocks[i].pos().x() != 10+loc*110){
@@ -59,7 +78,7 @@ void Game::play()
            }
        }
 
-   }
+   }*/
 
 }
 
