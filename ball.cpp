@@ -54,17 +54,17 @@ void Ball::hit_block()
         if(block){
             //cases for where it hits the block
           //hits the bottom
-          if (pos().y() > block->pos().y() + 0 && y_velocity < 0)
-              y_velocity*=-1;
+          if (pos().y() > block->pos().y() + 0 && y_velocity < 0){
+              y_velocity*=-1; }
           //hits the top
-          if (block->pos().y() > pos().y() + 0 && y_velocity > 0)
-              y_velocity*=-1;
+          if (block->pos().y() > pos().y() + 0 && y_velocity > 0){
+              y_velocity*=-1; }
          //hits the right side
-          if (pos().x() > block->pos().x() + 0 && x_velocity < 0)
-              x_velocity*=-1;
+          if (pos().x() > block->pos().x() + 0 && x_velocity < 0){
+              x_velocity*=-1;}
          //hits the left side
-          if (block->pos().x() > pos().x() + 0 && x_velocity > 0)
-              x_velocity*=-1;
+          if (block->pos().x() > pos().x() + 0 && x_velocity > 0){
+              x_velocity*=-1;}
             //game -> scene -> removeItem(block);
             -- block->value;
             if (block->value == 0){

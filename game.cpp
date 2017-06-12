@@ -26,12 +26,12 @@ Game::Game(QWidget *parent) : QGraphicsView (parent)
     ball->setPos(320,880);
     scene -> addItem(ball);
 
-    score = new Score();
-    score->setPos(10,890);
-    scene->addItem(score);
+    // score = new Score();
+     //score->setPos(10,890);
+     //scene->addItem(score);
 
 
-}
+ }
 
 void Game::play()
 {
