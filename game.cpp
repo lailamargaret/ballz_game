@@ -85,10 +85,10 @@ void Game::move_blocks_down()
     for (int i = 0, n = all_it.size(); i < n; ++i){
         Block * block = dynamic_cast<Block*>(all_it[i]);
         if(block){
-            if (block->pos().y() >= 770){
-                scene->removeItem(block);
-                delete block;}
-            block->setPos(block->pos().x(), block->pos().y()+110);
+           block->setPos(block->pos().x(), block->pos().y()+110);
+           if (block->pos().y() >= 780){
+               scene->removeItem(block);
+               delete block;}
         }
     }
     clicked = false;
