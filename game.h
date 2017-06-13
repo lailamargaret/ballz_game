@@ -13,16 +13,19 @@ class Game: public QGraphicsView{
     friend class Score;
 public:
     Game(QWidget* parent = nullptr);
+    Game(const Game & g);
+    Game(Game&& g);
+    Game& operator =(Game g);
 
     void play();
-
-    QGraphicsScene* scene;
 
     void mousePressEvent(QMouseEvent * e);
 
     void spawn_blocks();
 
     void move_blocks_down();
+
+    QGraphicsScene* scene;
 
 private:
     std::vector<Block> blocks;

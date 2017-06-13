@@ -31,7 +31,32 @@ Game::Game(QWidget *parent) : QGraphicsView (parent)
      //scene->addItem(score);
 
 
- }
+}
+
+Game::Game(const Game& g): ball(nullptr), score(nullptr)
+{
+   try { ball = new Ball (*(g.ball));
+        //scene = new QGraphicsScene(*(g.scene));
+        score = new Score (*(g.score));}
+    catch(const std::exception& e){
+        delete ball;
+        delete score;
+        throw;
+    }
+}
+
+Game::Game(Game &&g) : ball(nullptr), score(nullptr)
+{
+    std::swap(ball, g.ball);
+    std::swap(score, g.score);
+}
+
+Game& Game::operator = (Game g)
+{
+    std::swap(ball, g.ball);
+    std::swap(score, g.score);
+    return *this;
+}
 
 void Game::play()
 {

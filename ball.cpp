@@ -16,6 +16,11 @@ Ball::Ball(QGraphicsItem *parent) : QGraphicsEllipseItem(parent), QObject() {
     timer -> start(18);
 }
 
+Ball::Ball(const Ball &b)
+{
+
+}
+
 void Ball::move()
 {
     moveBy(x_velocity, y_velocity);

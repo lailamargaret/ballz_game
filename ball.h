@@ -10,9 +10,9 @@ public:
     friend class Block;
     friend class Game;
     Ball(QGraphicsItem* parent = 0);
-    //void respond_by_moving(QPoint click_loc);
+    Ball(const Ball& b);
+
 public slots:
-    //void mousePressEvent(QGraphicsSceneMouseEvent* event);
     void move();
 private:
     double x_velocity;
