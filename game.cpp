@@ -1,7 +1,6 @@
 #include "game.h"
 #include "ball.h"
 #include "block.h"
-#include "myqgraphicsscene.h"
 #include <QGraphicsView>
 #include <ctime>
 #include <QDebug>
