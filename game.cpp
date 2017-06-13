@@ -10,8 +10,9 @@
 //#include <QTimer>
 #include "score.h"
 
-Game::Game(QWidget *parent) : QGraphicsView (parent)
+Game::Game(QWidget *parent) : QGraphicsView (parent), ball(nullptr), score(nullptr)
 {
+   try{
     scene = new QGraphicsScene(0,0,780,920);
     setFixedSize(780,920);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -29,6 +30,13 @@ Game::Game(QWidget *parent) : QGraphicsView (parent)
     // score = new Score();
      //score->setPos(10,890);
      //scene->addItem(score);
+    }
+    catch(const std::exception& e){
+        delete scene;
+        delete ball;
+        delete score;
+        throw;
+    }
 
 
 }
