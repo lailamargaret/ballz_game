@@ -35,7 +35,7 @@ void Ball::hit_wall()
         y_velocity*=-1;
 
     //hit the left
-    if(mapToScene(rect().topRight()).x() <= 0)
+    if(mapToScene(rect().topLeft()).x() <= 0)
         x_velocity*=-1;
 
     if(mapToScene(rect().topLeft()).x() >= 740)
@@ -66,7 +66,7 @@ void Ball::hit_block()
               y_velocity*=-1; }
          //hits the right side
           if (pos().x() > block->pos().x() + 0 && x_velocity < 0){
-              x_velocity*=-1;}
+              x_velocity*=-1; }
          //hits the left side
           if (block->pos().x() > pos().x() + 0 && x_velocity > 0){
               x_velocity*=-1;}

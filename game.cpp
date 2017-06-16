@@ -69,6 +69,7 @@ void Game::play()
 {
 
     spawn_blocks();
+    move_blocks_down();
 
 }
 
@@ -95,7 +96,7 @@ void Game::mousePressEvent(QMouseEvent * e)
 
 void Game::spawn_blocks()
 {
-    int num_blocks = rand() % 7 + 1;
+    int num_blocks = rand() % 6 + 1;
     std::vector<int> locs;
     bool dup = false;
 
