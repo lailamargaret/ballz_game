@@ -49,10 +49,7 @@ void Ball::hit_wall()
     if(mapToScene(rect().bottomRight()).y() > 890){
         x_velocity = 0;
         y_velocity = 0;
-
     }
-
-
 }
 
 void Ball::hit_block()
@@ -72,47 +69,41 @@ void Ball::hit_block()
           //cases for where it hits the block
             //hits the right side
              if (ballx > blockx + xbuff && x_velocity < 0){
-              qDebug() << "hit right of block";
-                 x_velocity*=-1;
-                 -- block->value;
-                 if (block->value == 0){
-                     delete block;
-                     }
+             // qDebug() << "hit right of block";
+              x_velocity*=-1;
                  }
 
-             //hits the left side
-             else if (blockx > ballx  && x_velocity > 0){
-                 qDebug() << "hit left of block";
-                 x_velocity*=-1;
-                 //y_velocity *= -1;
-                 -- block->value;
-                 if (block->value == 0){
+          //hits the left side
+          else if (blockx > ballx  && x_velocity > 0){
+          // qDebug() << "hit left of block";
+          x_velocity*=-1;
+          }
 
-                     delete block;
-                 }}
-
-            //hits the bottom
+          //hits the bottom
           else if (bally > blocky + ybuff && y_velocity < 0){
               y_velocity = y_velocity*-1;
-              qDebug() << "hit bottom of block";
-              -- block->value;
-              if (block->value == 0){
+             // qDebug() << "hit bottom of block";
+          }
 
-                          delete block;
-                      }
-                }
           //hits the top
           else if (blocky > bally + ybuff && y_velocity > 0){
               y_velocity*=-1;
-              qDebug() << "hit top of block";
+             // qDebug() << "hit top of block";
+           }
 
-              -- block->value;
-              if (block->value == 0){
-                  delete block;
-              }
+          -- block->value;
+          if (block->value == 0){
+             delete block;
           }
 
-
+          if(block->value == 1)
+               block->setBrush(Qt::red);
+          if (block->value == 2)
+                block->setBrush(Qt::yellow);
+          if (block->value == 3)
+              block->setBrush(Qt::green);
+          if(block->value == 4)
+               block->setBrush(Qt::blue);
             //game -> scene -> removeItem(block);
            // game -> spawn_blocks();
 
