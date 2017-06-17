@@ -62,7 +62,7 @@ void Ball::hit_block()
         Block * block = dynamic_cast<Block*>(col_it[i]);
         if(block){
 
-            double xbuff = 90;
+            double xbuff = 80;
             double ybuff = 0;
             double ballx = pos().x();
             double bally = pos().y();
