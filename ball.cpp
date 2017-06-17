@@ -9,6 +9,7 @@ extern Game* game;
 Ball::Ball(QGraphicsItem *parent) : QGraphicsEllipseItem(parent), QObject() {
     setRect(0,0,20,20);
     setBrush(Qt::white);
+
     x_velocity = 0;
     y_velocity = 0;
 
@@ -61,7 +62,8 @@ void Ball::hit_block()
         Block * block = dynamic_cast<Block*>(col_it[i]);
         if(block){
 
-            double xbuff, ybuff = 8;
+            double xbuff = 90;
+            double ybuff = 0;
             double ballx = pos().x();
             double bally = pos().y();
             double blockx = block->pos().x();
@@ -70,25 +72,46 @@ void Ball::hit_block()
             //cases for where it hits the block
           //hits the bottom
           if (bally > blocky + ybuff && y_velocity < 0){
-              y_velocity*=-1; }
+              y_velocity = y_velocity*-1;
+              qDebug() << "hit bottom of block";
+              -- block->value;
+              if (block->value == 0){
+
+                          delete block;
+                      }
+                }
           //hits the top
           if (blocky > bally + ybuff && y_velocity > 0){
-              y_velocity*=-1; }
+              y_velocity*=-1;
+              qDebug() << "hit top of block";
+
+              -- block->value;
+              if (block->value == 0){
+                  delete block;
+              }
+          }
          //hits the right side
-          if (ballx > blockx + xbuff && x_velocity < 0){
+          if (ballx > blockx  && x_velocity < 0){
+           qDebug() << "hit right of block";
               x_velocity*=-1;
-                      y_velocity *= -1; }
-         //hits the left side
-          if (blockx > ballx + xbuff && x_velocity > 0){
+              -- block->value;
+              if (block->value == 0){
+                  delete block;
+                  }
+              }
+          //hits the left side
+          if (blockx > ballx  && x_velocity > 0){
+              qDebug() << "hit left of block";
               x_velocity*=-1;
-              y_velocity *= -1;}
+              //y_velocity *= -1;
+              -- block->value;
+              if (block->value == 0){
+
+                  delete block;
+              }}
             //game -> scene -> removeItem(block);
-            -- block->value;
-            if (block->value == 0){
-                //game->score->increase();
-               // game->scene->removeItem(col_it[i]);
-                delete block;
-            }
+           // game -> spawn_blocks();
+
             return;
         }
     }
