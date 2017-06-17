@@ -9,6 +9,8 @@
 //#include <QTimer>
 #include "score.h"
 
+
+//Default constructor, including try/catch and resource allocationa according to RAII idioms of the course!!
 Game::Game(QWidget *parent) : QGraphicsView (parent), ball(nullptr), score(nullptr)
 {
    try{
@@ -16,6 +18,7 @@ Game::Game(QWidget *parent) : QGraphicsView (parent), ball(nullptr), score(nullp
     setFixedSize(780,920);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setBackgroundBrush(QBrush(Qt::black, Qt::SolidPattern));
     setScene(scene);
 
     clicked = false;
@@ -40,6 +43,7 @@ Game::Game(QWidget *parent) : QGraphicsView (parent), ball(nullptr), score(nullp
 
 }
 
+//Copy constructor!!!
 Game::Game(const Game& g): ball(nullptr), score(nullptr)
 {
    try { ball = new Ball (*(g.ball));
@@ -52,19 +56,27 @@ Game::Game(const Game& g): ball(nullptr), score(nullptr)
     }
 }
 
+
+//Move constructor!!!
 Game::Game(Game &&g) : ball(nullptr), score(nullptr)
 {
-    std::swap(ball, g.ball);
-    std::swap(score, g.score);
+    this->some_function_that_swaps(g);
 }
 
+//Proper assignment operator!!
 Game& Game::operator = (Game g)
 {
-    std::swap(ball, g.ball);
-    std::swap(score, g.score);
+    this->some_function_that_swaps(g);
     return *this;
 }
 
+void Game::some_function_that_swaps(Game& g){
+    std::swap(ball, g.ball);
+    std::swap(score, g.score);
+    return;
+}
+
+//Gameplay
 void Game::play()
 {
 

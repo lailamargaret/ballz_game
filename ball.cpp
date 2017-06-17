@@ -8,6 +8,7 @@ extern Game* game;
 
 Ball::Ball(QGraphicsItem *parent) : QGraphicsEllipseItem(parent), QObject() {
     setRect(0,0,20,20);
+    setBrush(Qt::white);
     x_velocity = 0;
     y_velocity = 0;
 
@@ -16,9 +17,11 @@ Ball::Ball(QGraphicsItem *parent) : QGraphicsEllipseItem(parent), QObject() {
     timer -> start(18);
 }
 
+//copy constructor
 Ball::Ball(const Ball &b)
 {
-
+    x_velocity = b.x_velocity;
+    y_velocity = b.y_velocity;
 }
 
 void Ball::move()
@@ -57,19 +60,28 @@ void Ball::hit_block()
     for (int i = 0, n = col_it.size(); i < n; ++i){
         Block * block = dynamic_cast<Block*>(col_it[i]);
         if(block){
+
+            double xbuff, ybuff = 8;
+            double ballx = pos().x();
+            double bally = pos().y();
+            double blockx = block->pos().x();
+            double blocky = block->pos().y();
+
             //cases for where it hits the block
           //hits the bottom
-          if (pos().y() > block->pos().y() + 0 && y_velocity < 0){
+          if (bally > blocky + ybuff && y_velocity < 0){
               y_velocity*=-1; }
           //hits the top
-          if (block->pos().y() > pos().y() + 0 && y_velocity > 0){
+          if (blocky > bally + ybuff && y_velocity > 0){
               y_velocity*=-1; }
          //hits the right side
-          if (pos().x() > block->pos().x() + 0 && x_velocity < 0){
-              x_velocity*=-1; }
+          if (ballx > blockx + xbuff && x_velocity < 0){
+              x_velocity*=-1;
+                      y_velocity *= -1; }
          //hits the left side
-          if (block->pos().x() > pos().x() + 0 && x_velocity > 0){
-              x_velocity*=-1;}
+          if (blockx > ballx + xbuff && x_velocity > 0){
+              x_velocity*=-1;
+              y_velocity *= -1;}
             //game -> scene -> removeItem(block);
             -- block->value;
             if (block->value == 0){

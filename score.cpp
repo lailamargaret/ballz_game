@@ -7,11 +7,12 @@ Score::Score (QGraphicsItem *parent) : QGraphicsTextItem(parent){
     setPlainText(QString("Score: ") + QString::number(score));
     setDefaultTextColor(Qt::red);
     setFont(QFont("times", 11));
+
 }
 
 Score::Score(const Score & s)
 {
-
+    score = s.score;
 }
 
 void Score::increase()
